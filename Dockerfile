@@ -49,8 +49,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
-COPY --from=builder /app/node_modules/.bin/prisma ./node_modules/.bin/prisma
+COPY --from=builder /app/scripts ./scripts
 
 USER nextjs
 
@@ -59,5 +58,5 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# Run prisma db push and start
-CMD ["sh", "-c", "node node_modules/prisma/build/index.js db push --accept-data-loss 2>&1; node server.js"]
+# Initialize DB tables and start
+CMD ["sh", "-c", "node scripts/init-db.mjs && node server.js"]
