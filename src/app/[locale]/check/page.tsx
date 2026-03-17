@@ -4,14 +4,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
 import { ProgressBar } from "@/components/check/ProgressBar";
 import { QuestionStep } from "@/components/check/QuestionStep";
-import { getNextQuestion, questions, getQuestionById } from "@/lib/classification";
+import { ToolSearchInput } from "@/components/check/ToolSearchInput";
+import { getNextQuestion, getQuestionById } from "@/lib/classification";
 import type { Answer } from "@/lib/classification/types";
-import { Loader2, ArrowRight } from "lucide-react";
+import type { KnownTool } from "@/lib/classification/toolDatabase";
+import { Loader2, ArrowRight, Search } from "lucide-react";
 
-const TOTAL_QUESTIONS = 8; // Maximum possible questions in the flow
+const TOTAL_QUESTIONS = 8;
 
 export default function CheckPage() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function CheckPage() {
   const [description, setDescription] = useState("");
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [error, setError] = useState("");
+  const [knownTool, setKnownTool] = useState<KnownTool | null>(null);
 
   const nextQuestionId = getNextQuestion(answers);
   const currentQuestion = nextQuestionId ? getQuestionById(nextQuestionId) : null;
@@ -33,13 +35,20 @@ export default function CheckPage() {
     setPhase("questions");
   };
 
+  const handleToolSelected = (tool: KnownTool) => {
+    setKnownTool(tool);
+    // Auto-fill the system name if not already set
+    if (!systemName) {
+      setSystemName(tool.name);
+    }
+  };
+
   const handleAnswer = async (answerId: string) => {
     const newAnswers = [...answers, { questionId: nextQuestionId!, answerId }];
     setAnswers(newAnswers);
 
     const next = getNextQuestion(newAnswers);
     if (!next) {
-      // Classification complete — submit
       setPhase("submitting");
       try {
         const res = await fetch("/api/check", {
@@ -66,6 +75,7 @@ export default function CheckPage() {
   const handleBack = () => {
     if (answers.length === 0) {
       setPhase("intro");
+      setKnownTool(null);
     } else {
       setAnswers(answers.slice(0, -1));
     }
@@ -119,9 +129,41 @@ export default function CheckPage() {
   }
 
   // Questions phase
+  // Show tool search on Q1 (the "is it AI?" question)
+  const showToolSearch = nextQuestionId === 'Q1';
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-20">
       <ProgressBar current={answers.length + 1} total={TOTAL_QUESTIONS} />
+
+      {showToolSearch && (
+        <div className="max-w-2xl mx-auto mb-8">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-5 border border-blue-100">
+            <div className="flex items-center gap-2 mb-3">
+              <Search className="h-5 w-5 text-primary" />
+              <h3 className="font-semibold">Kennen wir Ihr Tool?</h3>
+            </div>
+            <p className="text-sm text-gray-600 mb-4">
+              Geben Sie den Namen Ihres Tools ein — wir sagen Ihnen sofort, ob es ein KI-System ist und welche Risikoklasse wahrscheinlich gilt.
+            </p>
+            <ToolSearchInput
+              onToolSelected={(tool) => {
+                handleToolSelected(tool);
+                // Auto-answer Q1 based on the tool
+                if (!tool.isAI) {
+                  handleAnswer('Q1_NO');
+                }
+              }}
+              onManualAnswer={() => {}}
+            />
+            {knownTool && knownTool.isAI && (
+              <p className="text-sm text-blue-700 mt-3 font-medium">
+                ✓ {knownTool.name} ist ein KI-System. Beantworten Sie bitte die Frage unten mit "Ja".
+              </p>
+            )}
+          </div>
+        </div>
+      )}
 
       {currentQuestion && (
         <QuestionStep
