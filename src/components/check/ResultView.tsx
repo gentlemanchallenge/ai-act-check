@@ -124,21 +124,43 @@ export function ResultView({ id, systemName, riskLevel, userRole, summaryDe, obl
                   <Icon className="h-5 w-5 text-primary" />
                   <h3 className="font-semibold">{categoryLabels[category] || category}</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {obls.map((obl) => (
                     <Card key={obl.id}>
                       <CardContent className="pt-4 pb-4">
-                        <div className="flex items-start justify-between gap-4">
+                        <div className="flex items-start justify-between gap-4 mb-2">
                           <div>
-                            <p className="font-medium text-sm">{obl.titleDe}</p>
+                            <p className="font-medium">{obl.titleDe}</p>
                             <p className="text-xs text-primary font-mono mt-0.5">{obl.article}</p>
-                            <p className="text-sm text-gray-600 mt-1">{obl.descriptionDe}</p>
                           </div>
-                          <div className="flex items-center gap-1 text-xs text-gray-500 shrink-0">
+                          <div className="flex items-center gap-1 text-xs text-gray-500 shrink-0 bg-gray-100 rounded px-2 py-1">
                             <Clock className="h-3 w-3" />
                             {obl.deadline}
                           </div>
                         </div>
+
+                        <p className="text-sm text-gray-600 mb-3">{obl.descriptionDe}</p>
+
+                        {obl.whatItMeansDe && (
+                          <div className="bg-blue-50 rounded-lg p-3 mb-3">
+                            <p className="text-xs font-semibold text-primary mb-1">Was bedeutet das konkret?</p>
+                            <p className="text-sm text-gray-700 whitespace-pre-line">{obl.whatItMeansDe}</p>
+                          </div>
+                        )}
+
+                        {obl.actionItemsDe && obl.actionItemsDe.length > 0 && (
+                          <div className="border-l-2 border-primary/30 pl-3">
+                            <p className="text-xs font-semibold text-gray-500 mb-1.5">Das sollten Sie tun:</p>
+                            <ul className="space-y-1">
+                              {obl.actionItemsDe.map((item, i) => (
+                                <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                                  <CheckCircle className="h-4 w-4 text-primary/60 shrink-0 mt-0.5" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   ))}

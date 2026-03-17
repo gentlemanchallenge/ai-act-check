@@ -31,7 +31,17 @@ export function QuestionStep({ question, onAnswer, onBack, canGoBack }: Question
           </button>
           {showHelp && (
             <div className="mt-2 p-4 bg-blue-50 rounded-lg text-sm text-gray-700 leading-relaxed">
-              {question.helpTextDe}
+              {question.helpTextDe.split('\n').map((line, i) => {
+                // Simple bold markdown rendering
+                const parts = line.split(/\*\*(.*?)\*\*/g);
+                return (
+                  <p key={i} className={line === '' ? 'h-2' : 'mb-1'}>
+                    {parts.map((part, j) =>
+                      j % 2 === 1 ? <strong key={j}>{part}</strong> : part
+                    )}
+                  </p>
+                );
+              })}
             </div>
           )}
         </div>

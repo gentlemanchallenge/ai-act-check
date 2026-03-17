@@ -88,22 +88,22 @@ function generateSummary(riskLevel: RiskLevel, userRole: UserRole): string {
 
   switch (riskLevel) {
     case 'PROHIBITED':
-      return `Achtung: Dieses KI-System fällt unter eine verbotene Praktik gemäß Art. 5 des EU AI Act. Der Einsatz dieses Systems ist in der EU untersagt. Verbotene Praktiken sind seit dem 2. Februar 2025 in Kraft. Sie sollten den Einsatz dieses Systems umgehend einstellen und rechtlichen Rat einholen.`;
+      return `Achtung: Diese KI-Anwendung ist in der EU verboten! Der Einsatz verstößt gegen Art. 5 des EU AI Act. Dieses Verbot ist bereits seit dem 2. Februar 2025 in Kraft. Bitte stellen Sie den Einsatz dieses Systems sofort ein und holen Sie rechtlichen Rat ein. Bei Verstößen drohen Strafen bis zu 35 Mio. € oder 7% des weltweiten Jahresumsatzes (bei KMU: der niedrigere Betrag).`;
 
     case 'HIGH_RISK':
-      return `Ihr KI-System ist als Hochrisiko-KI-System eingestuft. Als ${roleLabel} haben Sie umfangreiche Pflichten nach dem EU AI Act. Die Anforderungen müssen bis zum 2. August 2026 umgesetzt sein. Verstöße können mit Geldbußen bis zu 15 Mio. € oder 3% des weltweiten Jahresumsatzes geahndet werden.`;
+      return `Ihr KI-System ist als Hochrisiko eingestuft. Das bedeutet: Sie dürfen es weiter nutzen, aber es gelten strenge Auflagen. Als ${roleLabel} müssen Sie unter anderem eine menschliche Aufsicht sicherstellen, die Eingabedaten prüfen und den Betrieb überwachen. Sie haben bis zum 2. August 2026 Zeit, alles umzusetzen. Scrollen Sie nach unten für Ihre konkreten Pflichten und Handlungsempfehlungen.`;
 
     case 'LIMITED_RISK':
-      return `Ihr KI-System unterliegt Transparenzpflichten (Art. 50). Als ${roleLabel} müssen Sie sicherstellen, dass Nutzer wissen, dass sie mit einem KI-System interagieren, und dass KI-generierte Inhalte als solche gekennzeichnet sind. Die Anforderungen gelten ab dem 2. August 2026.`;
+      return `Ihr KI-System fällt in die Kategorie "Begrenztes Risiko". Das ist die gute Nachricht: Es gelten keine strengen Hochrisiko-Auflagen. Sie müssen aber Transparenzpflichten einhalten — das heißt vor allem: Kennzeichnen Sie, wo KI im Spiel ist, damit Ihre Kunden und Nutzer Bescheid wissen. Die Details finden Sie unten.`;
 
     case 'MINIMAL_RISK':
-      return `Ihr KI-System ist als KI-System mit minimalem Risiko eingestuft. Es gelten keine spezifischen Anforderungen über die allgemeine KI-Kompetenzpflicht (Art. 4) hinaus. Dennoch empfehlen wir, die freiwilligen Verhaltenskodizes (Art. 95) zu berücksichtigen.`;
+      return `Gute Nachricht: Ihr KI-System hat minimales Risiko. Es gelten keine besonderen Pflichten nach dem AI Act — außer der allgemeinen KI-Kompetenzpflicht (Art. 4), die bereits seit Februar 2025 für alle Unternehmen gilt. Stellen Sie sicher, dass Ihre Mitarbeiter wissen, wie sie KI verantwortungsvoll einsetzen.`;
 
     case 'GPAI':
-      return `Dieses System basiert auf einem General-Purpose AI Model (GPAI). Als ${roleLabel} eines GPAI-Modells haben Sie spezifische Pflichten nach Art. 53. Wichtig: Die GPAI-Anforderungen gelten bereits ab dem 2. August 2025.`;
+      return `Ihr System basiert auf einem General-Purpose AI Model (z.B. wie GPT, Claude oder Gemini). Als ${roleLabel} eines solchen Modells haben Sie besondere Pflichten: technische Dokumentation, Urheberrechts-Strategie und Informationspflichten gegenüber nachgelagerten Anbietern. Wichtig: Diese Pflichten gelten bereits ab dem 2. August 2025 — also ein Jahr früher als die Hochrisiko-Anforderungen.`;
 
     case 'NOT_AI':
-      return `Das beschriebene System ist kein KI-System im Sinne des EU AI Act. Die Verordnung findet keine Anwendung. Beachten Sie dennoch die allgemeine KI-Kompetenzpflicht (Art. 4), falls Sie andere KI-Systeme im Unternehmen einsetzen.`;
+      return `Entwarnung: Das beschriebene System ist kein KI-System im Sinne des EU AI Act. Die Verordnung gilt dafür nicht. Falls Sie aber andere KI-Tools in Ihrem Unternehmen einsetzen (z.B. ChatGPT, Copilot, DeepL), prüfen Sie diese separat — und beachten Sie die allgemeine KI-Kompetenzpflicht (Art. 4), die seit Februar 2025 gilt.`;
   }
 }
 

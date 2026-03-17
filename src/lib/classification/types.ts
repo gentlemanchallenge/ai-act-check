@@ -52,6 +52,8 @@ export interface Obligation {
   article: string;
   titleDe: string;
   descriptionDe: string;
+  whatItMeansDe: string;
+  actionItemsDe: string[];
   category: 'documentation' | 'transparency' | 'governance' | 'technical' | 'monitoring' | 'registration' | 'literacy';
   deadline: string;
   appliesTo: {
