@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AISystem {
+  id                String     @id @default(cuid())
+  sessionId         String?
+
+  name              String
+  description       String?
+
+  riskLevel         RiskLevel?
+  userRole          UserRole?
+  classificationPath Json?
+  obligations       Json?
+
+  checkCompletedAt  DateTime?
+  createdAt         DateTime   @default(now())
+
+  // [PHASE 2]
+  // userId          String?
+  // purchased       Boolean    @default(false)
+  // lemonSqueezyOrderId String?
+
+  @@index([sessionId])
+}
+
+enum RiskLevel {
+  PROHIBITED
+  HIGH_RISK
+  LIMITED_RISK
+  MINIMAL_RISK
+  GPAI
+  NOT_AI
+}
+
+enum UserRole {
+  PROVIDER
+  DEPLOYER
+  BOTH
+  IMPORTER
+  DISTRIBUTOR
+}
+
+model Subscriber {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  aiSystemId     String?
+  source         String    @default("result_page")
+  confirmed      Boolean   @default(false)
+  confirmToken   String?   @unique
+
+  remindersSent  Int       @default(0)
+  lastReminderAt DateTime?
+  unsubscribed   Boolean   @default(false)
+
+  createdAt      DateTime  @default(now())
+
+  @@index([email])
+}
+
+model CheckCount {
+  id        String    @id @default(cuid())
+  date      DateTime  @default(now()) @db.Date
+  riskLevel RiskLevel
+  userRole  UserRole?
+  count     Int       @default(1)
+
+  @@unique([date, riskLevel, userRole])
+}
+
+model AdminReminder {
+  id        String   @id @default(cuid())
+  taskId    String   @unique
+  sentAt    DateTime @default(now())
+}

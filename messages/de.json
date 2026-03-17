@@ -1,0 +1,94 @@
+{
+  "metadata": {
+    "title": "AI Act Check — Kostenloser EU AI Act Pflichten-Check für Unternehmen",
+    "description": "Kostenloser AI Act Pflichten-Check: Auch wer KI nur einsetzt, hat Pflichten als Betreiber. Risikoklassifizierung in 5 Minuten."
+  },
+  "nav": {
+    "home": "Startseite",
+    "check": "Pflichten-Check",
+    "wissen": "Wissen",
+    "blog": "Blog",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz"
+  },
+  "hero": {
+    "headline": "Nutzt Ihr Unternehmen KI? Dann betrifft Sie der EU AI Act.",
+    "subheadline": "70% aller Unternehmen setzen KI-Tools ein — die wenigsten kennen ihre Pflichten.",
+    "cta": "Jetzt kostenlos prüfen",
+    "countdownLabel": "bis zur Hochrisiko-Deadline"
+  },
+  "problem": {
+    "title": "Warum Sie jetzt handeln sollten",
+    "card1Title": "Auch Betreiber sind betroffen",
+    "card1Text": "Sie müssen keine KI entwickeln. Wer KI-Tools einsetzt — von ChatGPT bis Recruiting-Software — hat Pflichten als Betreiber.",
+    "card2Title": "Strafen bis 35 Mio. €",
+    "card2Text": "Verstöße gegen den AI Act werden mit bis zu 35 Mio. € oder 7% des weltweiten Jahresumsatzes geahndet.",
+    "card3Title": "Weniger als 30% haben begonnen",
+    "card3Text": "Die meisten KMU haben noch nicht mit der Vorbereitung begonnen. Die Deadline 2. August 2026 rückt näher."
+  },
+  "howItWorks": {
+    "title": "So funktioniert's",
+    "step1Title": "KI-Tool beschreiben",
+    "step1Text": "Nennen Sie uns das KI-Tool und den Einsatzzweck.",
+    "step2Title": "Fragen beantworten",
+    "step2Text": "Beantworten Sie geführte Fragen zu Ihrem KI-Einsatz.",
+    "step3Title": "Pflichten erfahren",
+    "step3Text": "Erhalten Sie Ihre Risikoklasse und alle relevanten Pflichten."
+  },
+  "examples": {
+    "title": "Beispiele: Welche Risikoklasse hat Ihr KI-Tool?"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen"
+  },
+  "check": {
+    "title": "AI Act Pflichten-Check",
+    "intro": "Beschreiben Sie Ihr KI-System",
+    "nameLabel": "Name des KI-Tools",
+    "namePlaceholder": "z.B. ChatGPT, Personio KI-Recruiting, HubSpot AI",
+    "descriptionLabel": "Wofür setzen Sie es ein?",
+    "descriptionPlaceholder": "z.B. Kundenanfragen beantworten, Bewerber vorselektieren, Marketing-Texte erstellen",
+    "start": "Check starten",
+    "next": "Weiter",
+    "back": "Zurück",
+    "helpToggle": "Hilfe anzeigen",
+    "calculating": "Ergebnis wird berechnet..."
+  },
+  "result": {
+    "title": "Ihr Ergebnis",
+    "yourRole": "Ihre Rolle",
+    "obligations": "Ihre Pflichten",
+    "literacyTitle": "KI-Kompetenzpflicht (Art. 4)",
+    "literacyText": "Unabhängig von der Risikoklasse: Die KI-Kompetenzpflicht gilt für Ihr Unternehmen bereits seit dem 2. Februar 2025.",
+    "nextSteps": "Nächste Schritte",
+    "emailCapture": "Ergebnis per E-Mail erhalten",
+    "share": "Dieses Ergebnis teilen",
+    "anotherCheck": "Haben Sie weitere KI-Systeme im Einsatz?",
+    "anotherCheckCta": "Nächstes System prüfen",
+    "disclaimer": "Dieses Tool bietet eine automatisierte Ersteinschätzung auf Basis der Verordnung (EU) 2024/1689 (Stand: März 2026). Es handelt sich um ein Orientierungstool, nicht um Rechtsberatung. Für eine verbindliche Einschätzung wenden Sie sich an einen qualifizierten Rechtsanwalt. Interpretationen können sich durch Leitlinien der EU-Kommission oder das Digital Omnibus-Paket ändern.",
+    "phase2Title": "Demnächst verfügbar",
+    "phase2Items": "PDF-Report zum Download, Interaktive Pflichten-Checkliste mit Tracking, Dokumentationsvorlagen"
+  },
+  "email": {
+    "title": "Ergebnis per E-Mail erhalten",
+    "benefit1": "Ihr Ergebnis als Zusammenfassung",
+    "benefit2": "Deadline-Erinnerungen (90, 60, 30 Tage vor dem 2. August 2026)",
+    "benefit3": "Updates bei Änderungen der Verordnung",
+    "placeholder": "Ihre E-Mail-Adresse",
+    "submit": "Absenden",
+    "noSpam": "Kein Spam. Jederzeit abbestellbar.",
+    "success": "Bitte prüfen Sie Ihre E-Mail zur Bestätigung.",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+  },
+  "footer": {
+    "description": "Kostenloser Pflichten-Check für den EU AI Act. Orientierungstool, keine Rechtsberatung.",
+    "links": "Links",
+    "legal": "Rechtliches"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Ein Fehler ist aufgetreten.",
+    "learnMore": "Mehr erfahren",
+    "checkCta": "Jetzt prüfen, welche Pflichten für Ihren KI-Einsatz gelten"
+  }
+}
