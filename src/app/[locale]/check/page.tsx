@@ -46,6 +46,7 @@ export default function CheckPage() {
   const handleAnswer = async (answerId: string) => {
     const newAnswers = [...answers, { questionId: nextQuestionId!, answerId }];
     setAnswers(newAnswers);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     const next = getNextQuestion(newAnswers);
     if (!next) {
@@ -79,6 +80,7 @@ export default function CheckPage() {
     } else {
       setAnswers(answers.slice(0, -1));
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (phase === "submitting") {
